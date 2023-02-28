@@ -3,6 +3,7 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const db = require("./config/database.js");
 const auth = require("./routes/auth.js");
+const post = require("./routes/post.js");
 
 dotenv.config();
 
@@ -12,6 +13,7 @@ app.use(express.json({ limit: "30mb", extended: true }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
 
 app.use("/", auth);
+app.use("/", post);
 
 app.get("/", (req, res) => {
   res.json({
